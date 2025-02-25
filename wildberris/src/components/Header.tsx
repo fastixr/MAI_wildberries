@@ -9,7 +9,7 @@ const Header: React.FC = () => {
         <Container>
           <div className="flex items-center justify-between py-10">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 transform -translate-y-1">
                 <Link href="/">
                   <img
                     src="/logo.svg"
@@ -18,7 +18,7 @@ const Header: React.FC = () => {
                   />
                 </Link>
               </div>
-              <div className="ml-[20px] relative w-[55px] h-[55px] group">
+              <button className="ml-[18px] relative w-[58px] h-[58px] group appearance-none focus:outline-none">
               <div
                     className="w-full h-full rounded-[15px] border border-white opacity-35 group-hover:opacity-100 transition-opacity"
                     style={{ borderWidth: '1px' }}
@@ -28,7 +28,12 @@ const Header: React.FC = () => {
                     <div className="w-[25px] h-[3px] bg-white rounded-full mt-[6px]" />
                     <div className="w-[25px] h-[3px] bg-white rounded-full mt-[6px]" />
                 </div>
-              </div>
+              </button>
+              <input
+              type="text"
+              placeholder="Найти на Wildberries"
+              className="ml-[12px] w-[920px] h-[58px] rounded-[17px] bg-white focus:outline-none px-4 text-black text-[17px] font-sans font-regular"
+            />
             </div>
           </div>
         </Container>

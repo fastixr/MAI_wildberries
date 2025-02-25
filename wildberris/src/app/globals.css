@@ -19,6 +19,10 @@ body {
   background: var(--background);
 }
 
+input::placeholder {
+  opacity: 0.7;
+}
+
 @font-face {
   font-family: 'Hauss';
   src: url('/fonts/ALSHauss-BookItalic.woff2') format('woff2'),

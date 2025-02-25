@@ -15,6 +15,14 @@ export default {
       fontFamily: {
         sans: ['Hauss', 'sans-serif'],
       },
+      fontWeight: {
+        bookitalic: '400',
+        hairline: '100',
+        light: '300',
+        regular: '400',
+        medium: '500',
+        thin: '200',
+      },
     },
   },
   plugins: [],
