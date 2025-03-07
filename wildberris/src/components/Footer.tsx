@@ -46,9 +46,18 @@ const Footer: React.FC = () => {
                         <div className="flex gap-3 mt-4 flex-nowrap">
                             {["vk", "git", "tg", "yt"].map((icon) => (
                                 <div key={icon} className="w-12 h-12 bg-white rounded-lg flex items-center justify-center relative group">
-                                    <img src={`/icons/icon${icon}.svg`} alt={`Icon ${icon}`} className="w-8 h-8 group-hover:hidden" />
-                                    <img src={`/icons/icon${icon}h.svg`} alt={`Icon ${icon} hover`} className="absolute w-9 h-9 group-hover:block hidden" />
+                                    <img
+                                        src={`/icons/icon${icon}.svg`}
+                                        alt={`Icon ${icon}`}
+                                        className="w-8 h-8 group-hover:scale-95 group-hover:opacity-0 transition-all duration-300 ease-in-out"
+                                    />
+                                    <img
+                                        src={`/icons/icon${icon}h.svg`}
+                                        alt={`Icon ${icon} hover`}
+                                        className="absolute w-9 h-9 group-hover:scale-100 group-hover:opacity-100 opacity-0 transform transition-all duration-300 ease-in-out"
+                                    />
                                 </div>
+
                             ))}
                         </div>
                     </div>

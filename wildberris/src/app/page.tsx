@@ -9,7 +9,7 @@ export default function Home() {
       <Header />
       <Container>
         <main className="flex-grow">
-          <h1 className="text-4xl font-bold text-center">Welcome to Next.js!</h1>
+          <h1 className="text-4xl font-bold text-center">вова лох</h1>
         </main>
       </Container>
       <Footer />
