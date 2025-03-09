@@ -5,11 +5,13 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import Container from './Container';
 import AuthModal from './ui/AuthModal';
+import SideMenu from './ui/SideMenu';
 import '../app/globals.css';
 import '../app/header.css';
 
 const Header: React.FC = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false); // Состояние для модального окна
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние для меню
 
   const handleLoginClick = () => {
     setIsAuthModalOpen(true); // Открываем модальное окно
@@ -17,6 +19,10 @@ const Header: React.FC = () => {
 
   const handleCloseAuthModal = () => {
     setIsAuthModalOpen(false); // Закрываем модальное окно
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Переключение видимости меню
   };
 
   return (
@@ -35,7 +41,9 @@ const Header: React.FC = () => {
               </Link>
             </div>
 
-            <button className="ml-[18px] relative w-[60px] h-[60px] group appearance-none focus:outline-none min-w-[60px] min-h-[60px]">
+            <button 
+              onClick={toggleMenu}
+              className="ml-[18px] relative w-[60px] h-[60px] group appearance-none focus:outline-none min-w-[60px] min-h-[60px]">
               <div
                 className="w-full h-full rounded-[15px] border border-white opacity-35 group-hover:opacity-100 transition-opacity"
                 style={{ borderWidth: '1px' }}
@@ -98,6 +106,8 @@ const Header: React.FC = () => {
         </div>
       </Container>
       <AuthModal isOpen={isAuthModalOpen} onClose={handleCloseAuthModal} />
+
+      {isMenuOpen && <SideMenu onClose={toggleMenu} />}
     </header>
   );
 };

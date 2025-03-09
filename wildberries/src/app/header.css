@@ -70,3 +70,11 @@
       width: 50vw;
     }
 }
+
+.side-menu {
+  scrollbar-width: none;
+}
+
+.side-menu::-webkit-scrollbar {
+  display: none;
+}

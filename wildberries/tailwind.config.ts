@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
     darkMode: ["class"],
@@ -57,14 +58,16 @@ export default {
   				'sans-serif'
   			]
   		},
-      fontWeight: {
-        bookitalic: '400',
-        hairline: '100',
-        light: '300',
-        regular: '400',
-        medium: '500',
-        thin: '200',
-      },
+		fontWeight: {
+			hairline: '100',
+			thin: '200',
+			light: '300',
+			regular: '400',
+			book: '400',
+			medium: '500',
+			bold: '700',
+			black: '900',
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -72,5 +75,5 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
