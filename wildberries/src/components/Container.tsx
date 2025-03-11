@@ -6,7 +6,7 @@ interface ContainerProps {
 
 export default function Container({ children }: ContainerProps) {
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center mt-3 mb-3">
       {children}
     </div>
   );
