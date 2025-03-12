@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col items-center justify-center w-[200px]">
-                        <img src="/qr1.svg" alt="QR Code" className="w-40 h-40" />
+                        <img src="/pictures/qr1.svg" alt="QR Code" className="w-40 h-40" />
                         <div className="flex gap-3 mt-4 flex-nowrap">
                             {["vk", "git", "tg", "yt"].map((icon) => (
                                 <div key={icon} className="w-10 h-10 bg-white rounded-lg flex items-center justify-center relative group">
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="lg:hidden flex flex-col items-center mt-10 text-gray-600">
                     <div className="flex flex-col items-center justify-center w-[200px]">
-                        <img src="/qr1.svg" alt="QR Code" className="w-40 h-40" />
+                        <img src="/pictures/qr1.svg" alt="QR Code" className="w-40 h-40" />
                         <div className="flex gap-3 mt-4 flex-nowrap">
                             {["vk", "git", "tg", "yt"].map((icon) => (
                                 <div key={icon} className="w-10 h-10 bg-white rounded-lg flex items-center justify-center relative group">

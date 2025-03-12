@@ -25,7 +25,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                         className="p-4 rounded-lg hover:shadow-lg transition-all"
                     >
                         <img
-                            src="/product.svg"
+                            src="/pictures/product.svg"
                             alt={product.name}
                             className="w-full object-contain rounded-md mb-4"
                         />
