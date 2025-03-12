@@ -119,7 +119,7 @@ export default function AdminProductsPage() {
             <motion.div key={product.id} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }}>
               <Card>
                 <CardContent className="p-4 rounded-lg hover:shadow-lg transition-all">
-                  <img src="/product.svg" alt={product.name} className="w-full object-contain rounded-md mb-4" />
+                  <img src="/pictures/product.svg" alt={product.name} className="w-full object-contain rounded-md mb-4" />
                   <h2 className="text-lg font-semibold">{product.name}</h2>
                   <div className="flex items-center mb-2">
                     <p className="text-sm text-black truncate">{product.author}</p>

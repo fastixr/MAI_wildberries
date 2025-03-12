@@ -30,8 +30,8 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                             className="w-full object-contain rounded-md mb-4"
                         />
                         <div className="flex items-center">
-                            <p className="text-xl font-semibold text-red-500 truncate">{product.price}</p>
-                            <p className="ml-2 text-sm text-gray-500 line-through truncate">{product.oldPrice}</p>
+                            <p className="text-xl font-semibold text-red-500 truncate">{product.price}₽</p>
+                            <p className="ml-2 text-sm text-gray-500 line-through truncate">{product.oldPrice}₽</p>
                         </div>
                         <p className="text-sm text-red-500 mb-1 truncate">с WB Кошельком</p>
                         <div className="flex items-center mb-2">
