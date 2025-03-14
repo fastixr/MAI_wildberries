@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 interface SideMenuProps {
   onClose: () => void;
+  isOpen: boolean;
 }
 
 const menuItems = [
@@ -40,8 +43,7 @@ const menuItems = [
   { name: 'Акции', icon: '/icons/sidemenu/sale.svg' },
 ];
 
-const SideMenu: React.FC<SideMenuProps> = ({ onClose }) => {
-  // Закрытие меню при клике вне его области
+const SideMenu: React.FC<SideMenuProps> = ({ onClose, isOpen }) => {
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const menu = document.querySelector('.side-menu');
@@ -50,21 +52,30 @@ const SideMenu: React.FC<SideMenuProps> = ({ onClose }) => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';  // Убираем скролл при открытом меню
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'auto';  // Восстанавливаем скролл
+    }
+
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [onClose]);
+  }, [isOpen, onClose]);
 
   return (
     <>
-      {/* Затемняющий фон */}
-      <div
-        onClick={onClose} // Закрытие меню при клике на фон
-        className="fixed top-[115px] left-0 w-full h-[calc(100vh-115px)] bg-black bg-opacity-50 z-30"
-      />
+      {isOpen && (
+        <div
+          onClick={onClose}
+          className="fixed top-[115px] left-0 w-full h-[calc(100vh-115px)] bg-black bg-opacity-50 z-30"
+        />
+      )}
 
-      {/* Меню */}
       <div
-        className="fixed top-[115px] left-0 w-[350px] h-[calc(100vh-115px)] bg-white shadow-lg z-40 overflow-y-auto side-menu"
+        className={`fixed top-[115px] left-0 w-[350px] h-[calc(100vh-115px)] bg-white shadow-lg z-40 overflow-y-auto side-menu transition-transform duration-300 ${
+          isOpen ? 'open' : ''
+        }`}
       >
         <div className="p-4">
           {menuItems.map((item, index) => (
