@@ -3,6 +3,13 @@ import Container from "./Container";
 import "../app/globals.css";
 
 const Footer: React.FC = () => {
+    const socialLinks: Record<string, string> = {
+        vk: "https://vk.com",
+        git: "https://github.com",
+        tg: "https://t.me",
+        yt: "https://youtube.com",
+    };
+
     return (
         <footer className="bg-gray-200 h-[400px] w-full overflow-hidden">
             <Container>
@@ -42,10 +49,16 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col items-center justify-center w-[200px]">
-                        <img src="/pictures/qr1.svg" alt="QR Code" className="w-40 h-40" />
+                        <img src="/pictures/qr1_1.svg" alt="QR Code" className="w-40 h-40" />
                         <div className="flex gap-3 mt-4 flex-nowrap">
                             {["vk", "git", "tg", "yt"].map((icon) => (
-                                <div key={icon} className="w-10 h-10 bg-white rounded-lg flex items-center justify-center relative group">
+                                <a
+                                    key={icon}
+                                    href={socialLinks[icon]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 bg-white rounded-lg flex items-center justify-center relative group"
+                                >
                                     <img
                                         src={`/icons/icon${icon}.svg`}
                                         alt={`Icon ${icon}`}
@@ -56,23 +69,39 @@ const Footer: React.FC = () => {
                                         alt={`Icon ${icon} hover`}
                                         className="absolute w-7 h-7 group-hover:scale-100 group-hover:opacity-100 opacity-0 transform transition-all duration-300 ease-in-out"
                                     />
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>
-                    <div className="w-[400px] h-[100px] break-words">
+                    <div className="w-[400px] h-[100px]">
                         <h3 className="flex">
-                            © Wildberries 2004-2025. Все права защищены. <br />
-                            Применяются рекомендательные технологии
+                            © Wildberries 2004-2025. Все права защищены.
                         </h3>
+                        <div>
+                            <span>Применяются </span>
+                            <a
+                                className="hover:underline whitespace-nowrap inline-block"
+                                href="https://github.com/vovan-ivanoff/dead10cc"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                рекомендательные технологии
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div className="lg:hidden flex flex-col items-center mt-10 text-gray-600">
                     <div className="flex flex-col items-center justify-center w-[200px]">
-                        <img src="/pictures/qr1.svg" alt="QR Code" className="w-40 h-40" />
+                        <img src="/pictures/qr1_1.svg" alt="QR Code" className="w-40 h-40" />
                         <div className="flex gap-3 mt-4 flex-nowrap">
                             {["vk", "git", "tg", "yt"].map((icon) => (
-                                <div key={icon} className="w-10 h-10 bg-white rounded-lg flex items-center justify-center relative group">
+                                <a
+                                    key={icon}
+                                    href={socialLinks[icon]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 bg-white rounded-lg flex items-center justify-center relative group"
+                                >
                                     <img
                                         src={`/icons/icon${icon}.svg`}
                                         alt={`Icon ${icon}`}
@@ -83,15 +112,25 @@ const Footer: React.FC = () => {
                                         alt={`Icon ${icon} hover`}
                                         className="absolute w-7 h-7 group-hover:scale-100 group-hover:opacity-100 opacity-0 transform transition-all duration-300 ease-in-out"
                                     />
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>
-                    <div className="break-words mt-4 text-center">
+                    <div className="w-full text-center mt-10">
                         <h3 className="flex">
-                            © Wildberries 2004-2025. Все права защищены. <br />
-                            Применяются рекомендательные технологии
+                            © Wildberries 2004-2025. Все права защищены.
                         </h3>
+                        <div>
+                            <span>Применяются </span>
+                            <a
+                                className="hover:underline whitespace-nowrap inline-block"
+                                href="https://github.com/vovan-ivanoff/dead10cc"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                рекомендательные технологии
+                            </a>
+                        </div>
                     </div>
                 </div>
             </Container>

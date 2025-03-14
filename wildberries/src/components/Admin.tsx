@@ -11,10 +11,11 @@ import { motion } from "framer-motion";
 interface Product {
   id: number;
   name: string;
+  description: string;
   price: number;
   oldPrice: number;
+  image: string;
   author: string;
-  description: string;
 }
 
 export default function AdminProductsPage() {
@@ -28,6 +29,7 @@ export default function AdminProductsPage() {
     oldPrice: 0,
     author: "",
     description: "",
+    image: "",
   });
   const [editId, setEditId] = useState<number | null>(null);
 
@@ -55,7 +57,7 @@ export default function AdminProductsPage() {
       };
       setProducts([...products, newProduct]);
     }
-    setFormData({ name: "", price: 0, oldPrice: 0, author: "", description: "" });
+    setFormData({ name: "", price: 0, oldPrice: 0, author: "", description: "", image: ""});
     setShowAddForm(false);
   };
 
@@ -91,15 +93,26 @@ export default function AdminProductsPage() {
       >
         <form className="mb-6 space-y-4 p-1" onSubmit={handleAddOrUpdateProduct}>
           <Input className="w-[260px]" name="name" placeholder="Название" value={formData.name} onChange={handleInputChange} required />
-          <Input className="w-[260px]" type="number" name="price" placeholder="Стоимость по скидке" value={formData.price} onChange={handleInputChange} required />
-          <Input className="w-[260px]" type="number" name="oldPrice" placeholder="Стоимость до скидки" value={formData.oldPrice} onChange={handleInputChange} required />
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Стоимость по скидке</label>
+            <Input className="w-[260px]" type="number" name="price" value={formData.price} onChange={handleInputChange} required />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Стоимость до скидки</label>
+            <Input className="w-[260px]" type="number" name="oldPrice" value={formData.oldPrice} onChange={handleInputChange} required />
+          </div>
+
           <Input className="w-[260px]" name="author" placeholder="Продавец" value={formData.author} onChange={handleInputChange} required />
           <Input className="w-[260px]" name="description" placeholder="Описание" value={formData.description} onChange={handleInputChange} required />
           <Input className="w-[260px]" type="file" required />
+
           <Button type="submit" className="bg-[#A232E8] hover:bg-[#5D1286] text-white">
             {editId ? "Сохранить изменения" : "Добавить товар"}
           </Button>
         </form>
+
       </motion.div>
 
       <div className="flex items-center mb-4">
@@ -119,7 +132,7 @@ export default function AdminProductsPage() {
             <motion.div key={product.id} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }}>
               <Card>
                 <CardContent className="p-4 rounded-lg hover:shadow-lg transition-all">
-                  <img src="/pictures/product.svg" alt={product.name} className="w-full object-contain rounded-md mb-4" />
+                  <img src={product.image} alt={product.name} className="w-full h-[250px] object-contain rounded-md mb-4" />
                   <h2 className="text-lg font-semibold">{product.name}</h2>
                   <div className="flex items-center mb-2">
                     <p className="text-sm text-black truncate">{product.author}</p>
@@ -143,9 +156,9 @@ export default function AdminProductsPage() {
           ))}
         </div>
       </motion.div>
-      <div className="flex justify-center mt-10">
+      <a className="flex justify-center mt-10" href="/">
         <img src="/logos/logowb1.svg"></img>
-      </div>
+      </a>
     </div>
   );
 }
