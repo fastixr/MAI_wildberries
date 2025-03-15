@@ -85,8 +85,6 @@ const Header: React.FC = () => {
       document.body.classList.remove('overflow-hidden'); // Включаем прокрутку
     }
   };
-  
-  
 
   return (
     <header className="header">
@@ -96,7 +94,7 @@ const Header: React.FC = () => {
             <div className="flex-shrink-0 transform -translate-y-1">
               <Link href="/">
                 <Image
-                  src="/logo.svg"
+                  src="/logos/logo.svg"
                   alt="Логотип"
                   width={240}
                   height={38}
