@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "./Container";
 import "../app/globals.css";
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
     const socialLinks: Record<string, string> = {
@@ -49,7 +50,13 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col items-center justify-center w-[200px]">
-                        <img src="/pictures/qr1_1.svg" alt="QR Code" className="w-40 h-40" />
+                    <Image
+                    src="/pictures/qr1_1.svg"
+                    alt="QR Code"
+                    width={160}
+                    height={160}
+                    className="w-40 h-40"
+                    />
                         <div className="flex gap-3 mt-4 flex-nowrap">
                             {["vk", "git", "tg", "yt"].map((icon) => (
                                 <a
@@ -59,15 +66,19 @@ const Footer: React.FC = () => {
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 bg-white rounded-lg flex items-center justify-center relative group"
                                 >
-                                    <img
+                                    <Image
                                         src={`/icons/icon${icon}.svg`}
                                         alt={`Icon ${icon}`}
+                                        width={24}
+                                        height={24}
                                         className="w-6 h-6 group-hover:scale-95 group-hover:opacity-0 transition-all duration-300 ease-in-out"
                                     />
-                                    <img
+                                    <Image
                                         src={`/icons/icon${icon}h.svg`}
                                         alt={`Icon ${icon} hover`}
-                                        className="absolute w-7 h-7 group-hover:scale-100 group-hover:opacity-100 opacity-0 transform transition-all duration-300 ease-in-out"
+                                        width={28}
+                                        height={28}
+                                        className="absolute top-0 left-0 w-7 h-7 group-hover:scale-100 group-hover:opacity-100 opacity-0 transform transition-all duration-300 ease-in-out"
                                     />
                                 </a>
                             ))}
@@ -92,7 +103,13 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="lg:hidden flex flex-col items-center mt-10 text-gray-600">
                     <div className="flex flex-col items-center justify-center w-[200px]">
-                        <img src="/pictures/qr1_1.svg" alt="QR Code" className="w-40 h-40" />
+                        <Image
+                        src="/pictures/qr1_1.svg"
+                        alt="QR Code"
+                        width={160}
+                        height={160}
+                        className="w-40 h-40"
+                        />
                         <div className="flex gap-3 mt-4 flex-nowrap">
                             {["vk", "git", "tg", "yt"].map((icon) => (
                                 <a
@@ -102,14 +119,18 @@ const Footer: React.FC = () => {
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 bg-white rounded-lg flex items-center justify-center relative group"
                                 >
-                                    <img
+                                    <Image
                                         src={`/icons/icon${icon}.svg`}
                                         alt={`Icon ${icon}`}
+                                        width={24}
+                                        height={24}
                                         className="w-6 h-6 group-hover:scale-95 group-hover:opacity-0 transition-all duration-300 ease-in-out"
                                     />
-                                    <img
+                                    <Image
                                         src={`/icons/icon${icon}h.svg`}
                                         alt={`Icon ${icon} hover`}
+                                        width={28}
+                                        height={28}
                                         className="absolute w-7 h-7 group-hover:scale-100 group-hover:opacity-100 opacity-0 transform transition-all duration-300 ease-in-out"
                                     />
                                 </a>

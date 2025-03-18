@@ -1,5 +1,8 @@
+"use client"
+
 import React from "react";
 import Container from "../components/Container";
+import Image from 'next/image';
 
 interface ProductListProps {
     products: Product[];
@@ -18,28 +21,23 @@ interface Product {
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
     return (
         <Container>
-            {/* Обертка для центрирования */}
             <div className="w-full flex flex-col items-center px-[5%] sm:px-[7%] lg:px-[7%]">
-                {/* Рекламные блоки */}
                 <div className="w-full max-w-screen-xl space-y-2 mb-4">
-                    <div className="h-10 bg-gradient-to-r from-[#C800A1] via-[#981E97] to-[#470A68] rounded-xl flex items-center justify-center text-white font-semibold text-sm">
+                    <div className="h-10 bg-gradient-to-r from-[#C800A1] via-[#981E97] to-[#470A68] rounded-xl flex items-center justify-center text-white font-medium text-sm">
                         <h3 className="mt-1">Реклама</h3>
                     </div>
-                    <div className="h-28 bg-gradient-to-r from-[#C800A1] via-[#981E97] to-[#470A68] rounded-xl flex items-center justify-center text-white font-semibold sm:text-3xl md:text-4xl lg:text-6xl">
-                        <h3 className="mt-1">Тут могла быть ваша реклама</h3>
-                    </div>
                 </div>
-                
-                {/* Список товаров */}
                 <div className="w-full max-w-screen-xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
                     {products.map((product) => (
                         <div
                             key={product.id}
                             className="p-4 rounded-lg hover:shadow-lg transition-all"
                         >
-                            <img
+                            <Image
                                 src={product.image}
                                 alt={product.name}
+                                width={250}
+                                height={250}
                                 className="w-full h-[250px] object-contain rounded-md mb-4"
                             />
                             <div className="flex items-center">

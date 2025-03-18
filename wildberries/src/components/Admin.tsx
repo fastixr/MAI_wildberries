@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/AdminButton";
+import { Input } from "@/components/ui/AdminInput";
+import { Card, CardContent } from "@/components/ui/CardFull";
 import "../app/globals.css";
-import { Plus, Trash2, Edit } from "lucide-react";
+import { Plus, Minus, Trash2, Edit } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface Product {
@@ -57,7 +57,7 @@ export default function AdminProductsPage() {
       };
       setProducts([...products, newProduct]);
     }
-    setFormData({ name: "", price: 0, oldPrice: 0, author: "", description: "", image: ""});
+    setFormData({ name: "", price: 0, oldPrice: 0, author: "", description: "", image: "" });
     setShowAddForm(false);
   };
 
@@ -82,9 +82,13 @@ export default function AdminProductsPage() {
       </div>
       <div className="flex items-center mb-4">
         <h1 className="text-2xl font-bold">{editId ? "Редактирование товара" : "Добавление товара"}</h1>
-        <Button className="bg-white hover:text-[#5D1286] hover:bg-white text-black ml-10" onClick={() => setShowAddForm(!showAddForm)}>
-          <Plus className="w-6 h-6" />
+        <Button
+          className="bg-white hover:text-[#5D1286] hover:bg-white text-black ml-10"
+          onClick={() => setShowAddForm(!showAddForm)}
+        >
+          {showAddForm ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
         </Button>
+
       </div>
       <motion.div
         initial={{ opacity: 0, height: 0 }}
@@ -117,9 +121,13 @@ export default function AdminProductsPage() {
 
       <div className="flex items-center mb-4">
         <h2 className="text-2xl font-bold">Список товаров на платформе</h2>
-        <Button className="bg-white hover:text-[#5D1286] hover:bg-white text-black ml-10" onClick={() => setShowProducts(!showProducts)}>
-          <Plus className="w-6 h-6" />
+        <Button
+          className="bg-white hover:text-[#5D1286] hover:bg-white text-black ml-10"
+          onClick={() => setShowProducts(!showProducts)}
+        >
+          {showProducts ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
         </Button>
+
       </div>
       <motion.div
         initial={{ opacity: 0, height: 0 }}
