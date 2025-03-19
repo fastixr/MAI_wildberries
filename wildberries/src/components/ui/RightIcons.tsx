@@ -3,34 +3,34 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface RightIconsProps {
-  isZoom200: boolean;
+  isZoom200OrGreater: boolean;
   handleLoginClick: () => void;
 }
 
-const RightIcons: React.FC<RightIconsProps> = ({ isZoom200, handleLoginClick }) => {
+const RightIcons: React.FC<RightIconsProps> = ({ isZoom200OrGreater, handleLoginClick }) => {
   return (
     <div className="right-icons">
       <div className="flex flex-col items-center address">
         <Image
           src="/icons/address.svg"
           alt="Адрес"
-          width={20}
+          width={15}
           height={30}
         />
-        {!isZoom200 && (
+        {!isZoom200OrGreater && (
           <Link href="/addresses" className="mt-[0.5rem] text-white text-[0.875rem] font-hauss font-medium opacity-50 hover:opacity-100">
             Адреса
           </Link>
         )}
       </div>
 
-      {!isZoom200 && (
+      {!isZoom200OrGreater && (
         <>
           <div className="flex flex-col items-center" onClick={handleLoginClick}>
             <Image
               src="/icons/user.svg"
               alt="Авторизация"
-              width={25}
+              width={20}
               height={25}
             />
             <button className="mt-[0.5rem] text-white text-[0.875rem] font-hauss font-medium opacity-50 hover:opacity-100">
@@ -42,7 +42,7 @@ const RightIcons: React.FC<RightIconsProps> = ({ isZoom200, handleLoginClick }) 
             <Image
               src="/icons/trash.svg"
               alt="Корзина"
-              width={25}
+              width={20}
               height={25}
             />
             <Link href="/cart" className="mt-[0.5rem] text-white text-[0.875rem] font-hauss font-medium opacity-50 hover:opacity-100">

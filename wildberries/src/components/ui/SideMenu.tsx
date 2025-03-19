@@ -54,10 +54,10 @@ const SideMenu: React.FC<SideMenuProps> = ({ onClose, isOpen }) => {
 
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'hidden';  // Убираем скролл при открытом меню
+      document.body.style.overflow = 'hidden';
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.body.style.overflow = 'auto';  // Восстанавливаем скролл
+      document.body.style.overflow = 'auto';
     }
 
     return () => document.removeEventListener('mousedown', handleClickOutside);

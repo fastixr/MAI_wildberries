@@ -54,14 +54,14 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
-    setPhone(value); // Сохраняем только цифры
+    const value = e.target.value.replace(/\D/g, '');
+    setPhone(value);
   };
 
   const formatPhone = (phone: string, countryCode: string) => {
     if (!phone) return '';
   
-    const format = phoneFormats[countryCode] || '000 000-00-00'; // Шаблон форматирования
+    const format = phoneFormats[countryCode] || '000 000-00-00';
   
     let formattedPhone = '';
     let phoneIndex = 0;
@@ -72,10 +72,9 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
           formattedPhone += phone[phoneIndex];
           phoneIndex++;
         } else {
-          break; // Прекращаем форматирование, если цифры закончились
+          break;
         }
       } else {
-        // Добавляем разделитель только если есть следующая цифра
         if (phone[phoneIndex]) {
           formattedPhone += format[i];
         }
@@ -147,10 +146,10 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             <input
               type="tel"
               id="phone"
-              value={formatPhone(phone, selectedCountry.code)} // Форматируем номер при отображении
+              value={formatPhone(phone, selectedCountry.code)}
               onChange={handlePhoneChange}
               className="text-lg font-book flex-1 bg-transparent outline-none placeholder:text-gray-400"
-              placeholder={phoneFormats[selectedCountry.code]} // Шаблон в плейсхолдере
+              placeholder={phoneFormats[selectedCountry.code]}
               ref={inputRef}
             />
 

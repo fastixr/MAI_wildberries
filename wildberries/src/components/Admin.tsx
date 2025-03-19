@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/CardFull";
 import "../app/globals.css";
 import { Plus, Minus, Trash2, Edit } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link"
+import Image from "next/image";
 
 interface Product {
   id: number;
@@ -140,7 +142,13 @@ export default function AdminProductsPage() {
             <motion.div key={product.id} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }}>
               <Card>
                 <CardContent className="p-4 rounded-lg hover:shadow-lg transition-all">
-                  <img src={product.image} alt={product.name} className="w-full h-[250px] object-contain rounded-md mb-4" />
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={250}
+                  height={250}
+                  className="w-full h-[250px] object-contain rounded-md mb-4"
+                />
                   <h2 className="text-lg font-semibold">{product.name}</h2>
                   <div className="flex items-center mb-2">
                     <p className="text-sm text-black truncate">{product.author}</p>
@@ -164,9 +172,14 @@ export default function AdminProductsPage() {
           ))}
         </div>
       </motion.div>
-      <a className="flex justify-center mt-10" href="/">
-        <img src="/logos/logowb1.svg"></img>
-      </a>
+      <Link href="/" className="flex justify-center mt-10">
+        <Image
+          src="/logos/logowb1.svg" // Путь к изображению
+          alt="Логотип Wildberries" // Альтернативный текст
+          width={200} // Ширина изображения
+          height={50} // Высота изображения
+        />
+      </Link>
     </div>
   );
 }

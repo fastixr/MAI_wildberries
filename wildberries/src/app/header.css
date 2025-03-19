@@ -1,10 +1,10 @@
-/* app/header.css */
 :root {
   --header-content-width: 100%;
-  --header-height: 115px;
+  --header-padding: 20px 0 0 0;
   --search-bar-width: 930px;
   --search-bar-height: 60px;
-  --search-bar-rounded: 12px;
+  --search-bar-rounded: 14px;
+  --search-bar-margin-left: 15px;
   --logo-display: flex;
   --side-menu-display: flex;
   --right-icons-display: flex;
@@ -12,12 +12,11 @@
 }
 
 .header-wrapper {
-  background: linear-gradient(to top, #FF49D6, #E93FDD, #9012F3);
-  height: var(--header-height);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: height 0.3s ease;
+  background: linear-gradient(to top, #FD48D7 10%, #7B07F8 90%);
 }
 
 .header {
@@ -26,7 +25,18 @@
   justify-content: space-between;
   width: var(--header-content-width);
   margin: 0 auto;
-  height: 100%;
+  padding: var(--header-padding)
+}
+
+.header.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(to top, #FD48D7 10%, #7B07F8 90%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: height 0.3s ease, padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .logo-menu {
@@ -38,6 +48,7 @@
   width: var(--search-bar-width);
   height: var(--search-bar-height);
   border-radius: var(--search-bar-rounded);
+  margin-left: var(--search-bar-margin-left);
 }
 
 .side-menu {
@@ -52,8 +63,8 @@
 .right-icons {
   display: var(--right-icons-display);
   align-items: center;
-  gap: 15px;
-  padding-left: 15px;
+  gap: 20px;
+  padding-left: 20px;
 }
 
 .address-text {
@@ -61,92 +72,163 @@
 }
 
 .header.zoom-25 {
-  --header-content-width: 1600px;
-  --search-bar-width: 900px;
+  height: 114px;
+  --header-content-width: 1500px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-33 {
-  --header-content-width: 500px;
-  --search-bar-width: 250px;
+  height: 114px;
+  --header-content-width: 1500px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-50 {
-  --header-content-width: 700px;
-  --search-bar-width: 350px;
+  height: 114px;
+  --header-content-width: 1500px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-67 {
-  --header-content-width: 1000px;
-  --search-bar-width: 500px;
+  height: 114px;
+  --header-content-width: 1500px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-75 {
-  --header-content-width: 1100px;
-  --search-bar-width: 550px;
+  height: 114px;
+  --header-content-width: 1500px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-80 {
-  --header-content-width: 1150px;
-  --search-bar-width: 575px;
+  height: 114px;
+  --header-content-width: 1500px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-90 {
-  --header-content-width: 1300px;
-  --search-bar-width: 650px;
+  height: 114px;
+  --header-content-width: 1500px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-100 {
+  height: 114px;
   --header-content-width: 1600px;
-  --search-bar-width: 930px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-110 {
+  height: 114px;
   --header-content-width: 1600px;
-  --search-bar-width: 930px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 18px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-125 {
+  height: 114px;
   --header-content-width: 1500px;
-  --search-bar-width: 930px;
+  --search-bar-width: 925px;
+  --search-bar-rounded: 17px;
+  --header-padding: 10px 0 0 0;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-150 {
-  --header-content-width: 1200px;
+  height: 114px;
+  --header-content-width: 1250px;
   --search-bar-width: 680px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-175 {
+  height: 114px;
   --header-content-width: 1080px;
   --search-bar-width: 510px;
+  --search-bar-rounded: 17px;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-200 {
+  height: 64px;
   --header-content-width: 940px;
-  --header-height: 60px;
-  --search-bar-width: 850px;
+  --search-bar-width: 880px;
   --search-bar-height: 40px;
+  --search-bar-margin-left: 0px;
+  --header-padding: 0 0 0 0;
   --logo-display: none;
   --side-menu-display: none;
   --address-text-display: none;
+  transition: height 0.3s ease-in-out;
 }
 
-.header.zoom-250,
+.header.zoom-250 {
+  height: 64px;
+  --header-content-width: 940px;
+  --search-bar-width: 690px;
+  --search-bar-height: 40px;
+  --search-bar-margin-left: 0px;
+  --logo-display: none;
+  --side-menu-display: none;
+  --address-text-display: none;
+  transition: height 0.3s ease-in-out;
+}
+
 .header.zoom-300 {
-  --header-content-width: 1800px;
-  --search-bar-width: 1700px;
+  height: 64px;
+  --header-content-width: 940px;
+  --search-bar-width: 564px;
+  --search-bar-height: 40px;
+  --search-bar-margin-left: 0px;
+  --logo-display: none;
+  --side-menu-display: none;
+  --address-text-display: none;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-400 {
-  --header-content-width: 1800px;
-  --search-bar-width: 1650px;
+  height: 64px;
+  --header-content-width: 940px;
+  --search-bar-width: 406px;
+  --search-bar-height: 40px;
+  --search-bar-margin-left: 0px;
+  --logo-display: none;
+  --side-menu-display: none;
+  --address-text-display: none;
+  transition: height 0.3s ease-in-out;
 }
 
 .header.zoom-500 {
-  --header-content-width: 1750px;
-  --search-bar-width: 1550px;
+  height: 64px;
+  --header-content-width: 940px;
+  --search-bar-width: 311px;
+  --search-bar-height: 40px;
+  --search-bar-margin-left: 0px;
+  --logo-display: none;
+  --side-menu-display: none;
+  --address-text-display: none;
+  transition: height 0.3s ease-in-out;
 }
 
-/* Новые стили, перенесенные из header.tsx */
 .menu-button {
   margin-left: 18px;
   position: relative;
@@ -194,8 +276,8 @@
   outline: none;
   padding: 0 16px;
   color: black;
-  font-size: 1rem;
-  font-family: sans-serif;
+  font-size: 16px;
+  font-family: 'Hauss';
   font-weight: 400;
   border-radius: var(--search-bar-rounded);
 }

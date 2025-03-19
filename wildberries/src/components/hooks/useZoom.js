@@ -1,4 +1,3 @@
-// src/hooks/useZoom.js
 import { useEffect } from 'react';
 
 export function useZoom() {
@@ -7,10 +6,8 @@ export function useZoom() {
       const header = document.getElementById('header');
       const zoomLevel = Math.round(window.devicePixelRatio * 100);
 
-      // Удаляем все классы zoom
       header.className = header.className.replace(/\bzoom-\d+\b/g, '');
 
-      // Добавляем соответствующий класс
       if (zoomLevel <= 25) {
         header.classList.add('zoom-25');
       } else if (zoomLevel <= 33) {
@@ -48,11 +45,11 @@ export function useZoom() {
       }
     }
 
-    // Отслеживаем изменение масштабирования
+    updateHeaderZoom();
+
     window.addEventListener('resize', updateHeaderZoom);
     window.addEventListener('load', updateHeaderZoom);
 
-    // Очистка при размонтировании компонента
     return () => {
       window.removeEventListener('resize', updateHeaderZoom);
       window.removeEventListener('load', updateHeaderZoom);
