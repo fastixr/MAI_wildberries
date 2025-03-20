@@ -24,6 +24,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [isCountryListOpen, setIsCountryListOpen] = useState(false);
   const [isCodeInputOpen, setIsCodeInputOpen] = useState(false);
+  const [setProfile] = useState<{ id: string; phone: string; name: string; gender: string } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const countryListRef = useRef<HTMLDivElement>(null);
 
@@ -60,12 +61,12 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
   const formatPhone = (phone: string, countryCode: string) => {
     if (!phone) return '';
-  
+
     const format = phoneFormats[countryCode] || '000 000-00-00';
-  
+
     let formattedPhone = '';
     let phoneIndex = 0;
-  
+
     for (let i = 0; i < format.length; i++) {
       if (format[i] === '0') {
         if (phone[phoneIndex]) {
@@ -80,7 +81,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         }
       }
     }
-  
+
     return formattedPhone;
   };
 
@@ -98,6 +99,23 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
     onClose();
   };
 
+  const generateRandomId = (): string => {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  };
+
+  const handleAuthorization = (phoneNumber: string) => {
+    const profileId = generateRandomId();
+    const profile = {
+      id: profileId,
+      phone: phoneNumber,
+      name: "Иван Иванов",
+      gender: "Мужской",
+    };
+
+    localStorage.setItem('profile', JSON.stringify(profile));
+    setProfile(profile);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -108,7 +126,11 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
       />
 
       {isCodeInputOpen ? (
-        <CodeInputModal onClose={handleCloseModal} phoneNumber={`${selectedCountry.code} ${formatPhone(phone, selectedCountry.code)}`} />
+        <CodeInputModal
+          onClose={handleCloseModal}
+          phoneNumber={`${selectedCountry.code} ${formatPhone(phone, selectedCountry.code)}`}
+          onAuthorize={handleAuthorization}
+        />
       ) : (
         <div className="bg-white rounded-[20px] shadow-lg w-[420px] h-[330px] relative z-10 flex flex-col justify-center">
           <button
@@ -129,29 +151,29 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
           <div className="mt-[25px] flex justify-center">
             <div className="w-[330px] h-[45px] bg-[#E8E8F0] rounded-[10px] flex items-center px-4 focus-within:bg-white focus-within:ring-2 focus-within:ring-[#A232E8] relative">
-            <button
-              onClick={() => setIsCountryListOpen(!isCountryListOpen)}
-              className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-200 transition-colors"
-            >
-              <Image
-                src={selectedCountry.flag}
-                alt={selectedCountry.name}
-                width={22}
-                height={22}
-                className="rounded-full object-cover"
-              />
-              <span className="text-lg font-book">{selectedCountry.code}</span>
-            </button>
+              <button
+                onClick={() => setIsCountryListOpen(!isCountryListOpen)}
+                className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-200 transition-colors"
+              >
+                <Image
+                  src={selectedCountry.flag}
+                  alt={selectedCountry.name}
+                  width={22}
+                  height={22}
+                  className="rounded-full object-cover"
+                />
+                <span className="text-lg font-book">{selectedCountry.code}</span>
+              </button>
 
-            <input
-              type="tel"
-              id="phone"
-              value={formatPhone(phone, selectedCountry.code)}
-              onChange={handlePhoneChange}
-              className="text-lg font-book flex-1 bg-transparent outline-none placeholder:text-gray-400"
-              placeholder={phoneFormats[selectedCountry.code]}
-              ref={inputRef}
-            />
+              <input
+                type="tel"
+                id="phone"
+                value={formatPhone(phone, selectedCountry.code)}
+                onChange={handlePhoneChange}
+                className="text-lg font-book flex-1 bg-transparent outline-none placeholder:text-gray-400"
+                placeholder={phoneFormats[selectedCountry.code]}
+                ref={inputRef}
+              />
 
               {isCountryListOpen && (
                 <div
@@ -225,7 +247,11 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-const CodeInputModal: React.FC<{ onClose: () => void; phoneNumber: string }> = ({ onClose, phoneNumber }) => {
+const CodeInputModal: React.FC<{
+  onClose: () => void;
+  phoneNumber: string;
+  onAuthorize: (phoneNumber: string) => void;
+}> = ({ onClose, phoneNumber, onAuthorize }) => {
   const [code, setCode] = useState<string[]>(Array(6).fill(''));
   const [timer, setTimer] = useState(60);
   const [showResend, setShowResend] = useState(false);
@@ -258,18 +284,11 @@ const CodeInputModal: React.FC<{ onClose: () => void; phoneNumber: string }> = (
     if (newCode.join('').length === 6) {
       const enteredCode = newCode.join('');
       if (enteredCode === correctCode) {
-        handleAuthorization();
+        onAuthorize(phoneNumber);
       } else {
         setIsError(true);
       }
     }
-  };
-
-  const handleAuthorization = () => {
-    window.location.reload();
-
-    // здесь можно добавить логику для обновления состояния авторизации в приложении
-    // например, сохранить токен в localStorage или обновить контекст авторизации
   };
 
   const handleResendCode = () => {
